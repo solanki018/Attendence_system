@@ -1,49 +1,44 @@
-import React, { useState } from 'react'; 
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/signin.css';
 
 function SignIn() {
-  const [formData, setFormData] = useState({
-    firstName: '', lastName: '', email: '', password: '', batch: '', course: '', branch: ''
-  });
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [batch, setBatch] = useState('');
+  const [course, setCourse] = useState('');
+  const [branch, setBranch] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Check if the email already exists in localStorage
-    const storedEmail = localStorage.getItem('email');
-
-    if (storedEmail === formData.email) {
-      setErrorMessage('This email is already registered. Please use a different email.');
+    // Check if email ends with "@iitrpr.ac.in"
+    if (!email.endsWith('@iitrpr.ac.in')) {
+      setErrorMessage('Email must end with @iitrpr.ac.in');
       return;
     }
 
-    // Check if email ends with @iitrpr.ac.in
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@iitrpr\.ac\.in$/;
-    if (!emailRegex.test(formData.email)) {
-      setErrorMessage('Please use an IIT Ropar email ending with @iitrpr.ac.in');
+    // Prevent duplicate registration
+    if (localStorage.getItem('email') === email) {
+      setErrorMessage('This email is already registered.');
       return;
     }
 
-    if (!formData.email || !formData.password) {
-      setErrorMessage('Email and password are required.');
-      return;
-    }
+    // Save user data to localStorage
+    localStorage.setItem('email', email);
+    localStorage.setItem('password', password);
+    localStorage.setItem('firstName', firstName);
+    localStorage.setItem('lastName', lastName);
+    localStorage.setItem('batch', batch);
+    localStorage.setItem('course', course);
+    localStorage.setItem('branch', branch);
 
-    // Save credentials to localStorage
-    localStorage.setItem('email', formData.email);
-    localStorage.setItem('password', formData.password);
-
-    // Clear any existing error message and navigate to the main page
-    setErrorMessage('');
-    navigate('/main');
+    // Redirect to Student Page
+    navigate('/student');
   };
 
   return (
@@ -60,61 +55,57 @@ function SignIn() {
             <input
               type="text"
               placeholder="First Name"
-              name="firstName"
-              value={formData.firstName}
-              onChange={handleChange}
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
               required
             />
             <input
               type="text"
               placeholder="Last Name"
-              name="lastName"
-              value={formData.lastName}
-              onChange={handleChange}
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
               required
             />
           </div>
           <input
             type="email"
             placeholder="Email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
           <input
             type="password"
             placeholder="Password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             required
           />
           <div className="form-row">
             <input
               type="text"
               placeholder="Batch"
-              name="batch"
-              value={formData.batch}
-              onChange={handleChange}
+              value={batch}
+              onChange={(e) => setBatch(e.target.value)}
             />
             <input
               type="text"
               placeholder="Course"
-              name="course"
-              value={formData.course}
-              onChange={handleChange}
+              value={course}
+              onChange={(e) => setCourse(e.target.value)}
             />
           </div>
           <input
             type="text"
             placeholder="Branch"
-            name="branch"
-            value={formData.branch}
-            onChange={handleChange}
+            value={branch}
+            onChange={(e) => setBranch(e.target.value)}
           />
+          
+          {/* Submit button to navigate to student page */}
           <button type="submit">Sign in as student</button>
         </form>
+
         {errorMessage && <p className="error">{errorMessage}</p>}
       </div>
     </div>
