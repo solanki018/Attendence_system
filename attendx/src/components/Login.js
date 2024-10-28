@@ -1,32 +1,29 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import "../styles/login.css";
+import { useNavigate } from 'react-router-dom';
+import '../styles/login.css';
 
 function Login() {
-  const [loginData, setLoginData] = useState({ email: '', password: '', rememberMe: false });
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
-
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setLoginData({
-      ...loginData,
-      [name]: type === 'checkbox' ? checked : value,
-    });
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Retrieve stored credentials from localStorage
-    const storedEmail = localStorage.getItem('email');
-    const storedPassword = localStorage.getItem('password');
+    // Admin credentials
+    const adminEmail = 'admin@iitrpr.ac.in';
+    const adminPassword = 'attendx';
 
-    if (loginData.email === storedEmail && loginData.password === storedPassword) {
-      // Navigate to the main page upon successful login
-      navigate('/main');
+    if (email === adminEmail && password === adminPassword) {
+      // Navigate to Admin Page
+      navigate('/admin');
+    } else if (localStorage.getItem('email') === email && localStorage.getItem('password') === password) {
+      // Navigate to Student Page
+      navigate('/student');
     } else {
-      setErrorMessage('Invalid email or password');
+      // Display error message for incorrect credentials
+      setErrorMessage('Invalid email or password.');
     }
   };
 
@@ -36,7 +33,6 @@ function Login() {
         <h1>Attendance Management System</h1>
         <p>Indian Institute of Technology, Ropar</p>
       </div>
-
       <div className="login-right">
         <h2>Welcome to AttendX</h2>
         <form onSubmit={handleSubmit}>
@@ -44,10 +40,9 @@ function Login() {
           <input
             type="email"
             id="email"
-            name="email"
             placeholder="John@ibox.com"
-            value={loginData.email}
-            onChange={handleChange}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
 
@@ -55,32 +50,22 @@ function Login() {
           <input
             type="password"
             id="password"
-            name="password"
             placeholder="Password"
-            value={loginData.password}
-            onChange={handleChange}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             required
           />
 
           <div className="options">
             <label>
-              <input
-                type="checkbox"
-                name="rememberMe"
-                checked={loginData.rememberMe}
-                onChange={handleChange}
-              /> Remember me
+              <input type="checkbox" /> Remember me
             </label>
             <a href="/">Forgot password?</a>
           </div>
 
-          <button type="submit" className="student-button">Log in as student</button>
-          <button type="submit" className="admin-button">Log in as admin</button>
+          <button type="submit" className="student-button">Log in</button>
         </form>
         {errorMessage && <p className="error">{errorMessage}</p>}
-        <p>
-          Don't have an account? <Link to="/sign-in">Sign in as student</Link>
-        </p>
       </div>
     </div>
   );

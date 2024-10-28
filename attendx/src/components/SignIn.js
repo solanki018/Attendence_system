@@ -17,6 +17,21 @@ function SignIn() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    // Check if the email already exists in localStorage
+    const storedEmail = localStorage.getItem('email');
+
+    if (storedEmail === formData.email) {
+      setErrorMessage('This email is already registered. Please use a different email.');
+      return;
+    }
+
+    // Check if email ends with @iitrpr.ac.in
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@iitrpr\.ac\.in$/;
+    if (!emailRegex.test(formData.email)) {
+      setErrorMessage('Please use an IIT Ropar email ending with @iitrpr.ac.in');
+      return;
+    }
+
     if (!formData.email || !formData.password) {
       setErrorMessage('Email and password are required.');
       return;
@@ -26,6 +41,8 @@ function SignIn() {
     localStorage.setItem('email', formData.email);
     localStorage.setItem('password', formData.password);
 
+    // Clear any existing error message and navigate to the main page
+    setErrorMessage('');
     navigate('/main');
   };
 
