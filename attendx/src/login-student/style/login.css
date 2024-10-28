@@ -1,0 +1,102 @@
+/* Container */
+.login-container {
+    display: flex;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Left Section */
+  .login-left {
+    flex: 1;
+    background-color: #add8e6; /* Light blue color */
+    color: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .login-left h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  /* Right Section */
+  .login-right {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .login-right h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  /* Form */
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  input[type="email"],
+  input[type="password"] {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Options */
+  .options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .options a {
+    color: #7b7b7b;
+    text-decoration: none;
+    font-size: 0.9em;
+  }
+  
+  /* Buttons */
+  .student-button, .admin-button {
+    padding: 10px;
+    margin: 5px 0;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+  }
+  
+  .student-button {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .admin-button {
+    background-color: #17a2b8;
+    color: white;
+  }
+  
+  p {
+    text-align: center;
+    font-size: 0.9em;
+    color: #7b7b7b;
+  }
+  
+  p a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
