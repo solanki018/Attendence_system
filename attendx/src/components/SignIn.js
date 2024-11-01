@@ -22,20 +22,29 @@ function SignIn() {
       return;
     }
 
-    // Prevent duplicate registration
-    if (localStorage.getItem('email') === email) {
+    // Retrieve the existing users from localStorage
+    const existingUsers = JSON.parse(localStorage.getItem('users')) || [];
+
+    // Check if the email is already registered
+    const isEmailRegistered = existingUsers.some((user) => user.email === email);
+    if (isEmailRegistered) {
       setErrorMessage('This email is already registered.');
       return;
     }
 
-    // Save user data to localStorage
-    localStorage.setItem('email', email);
-    localStorage.setItem('password', password);
-    localStorage.setItem('firstName', firstName);
-    localStorage.setItem('lastName', lastName);
-    localStorage.setItem('batch', batch);
-    localStorage.setItem('course', course);
-    localStorage.setItem('branch', branch);
+    // Create new user object
+    const newUser = {
+      firstName,
+      lastName,
+      email,
+      password,
+      batch,
+      course,
+      branch
+    };
+
+    // Save the new user to localStorage
+    localStorage.setItem('users', JSON.stringify([...existingUsers, newUser]));
 
     // Redirect to Student Page
     navigate('/student');

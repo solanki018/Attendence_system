@@ -1,12 +1,25 @@
-// src/pages/StudentPage.js
+// MainStudentDashboard.js
 import React from 'react';
+import Navbar from './Navbar';
+import Sidebar from './Sidebar';
+import GreetingSection from './GreetingSection';
+import AttendanceOverview from './AttendanceOverview';
+import Alerts from './Alerts';
+import '../../styles/student-panel/studentpage.css';
 
 function StudentPage() {
+  
   return (
-    <div>
-      <h1>Student Dashboard</h1>
-      <p>Welcome to your AttendX Student Dashboard!</p>
-      {/* Add more student functionalities here */}
+    <div className="dashboard-container">
+      <Sidebar />
+      <div className="main-content">
+        <Navbar />
+        <GreetingSection />
+        <div className="content-row">
+          <AttendanceOverview />
+          <Alerts />
+        </div>
+      </div>
     </div>
   );
 }
