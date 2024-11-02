@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import '../styles/signin.css';
 
 function SignIn() {
@@ -114,10 +114,13 @@ function SignIn() {
           {/* Submit button to navigate to student page */}
           <button type="submit">Sign in as student</button>
         </form>
-
+        <p>
+          youhave an account? <Link to="/">log in as student</Link>
+        </p>
         {errorMessage && <p className="error">{errorMessage}</p>}
       </div>
     </div>
+    
   );
 }
 

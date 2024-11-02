@@ -23,7 +23,6 @@ function App() {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/dashboard" element={<StudentPage />} />
         <Route path="/profile-student" element={<StudentDetails />} />
-        
         <Route path="/addstudent" element={<AddStudent />} />
 
         
