@@ -32,7 +32,7 @@
     justify-content: space-between;
     align-items: center;
     border-top: 1px solid #e3e6eb;
-    padding: 10px 0;
+    padding: 10px 10px;
 }
 
 .history-item:first-child {
