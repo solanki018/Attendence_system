@@ -3,47 +3,42 @@ import { useNavigate } from 'react-router-dom';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 import '../../styles/student-panel/StudentDetails.css';
+import axios from 'axios';
+
+const client = axios.create({
+    baseURL: "http://localhost:8080",
+});
 
 function StudentDetails() {
-    const navigate = useNavigate();
-    const [user, setUser] = useState(null);
-    const [profilePic, setProfilePic] = useState(localStorage.getItem('profilePic') || 'default-avatar.png'); // Load profile picture from localStorage
+
+    const [student, setStudent] = useState(null);
+    const [loading, setLoading] = useState(true); // Initialize loading state
 
     useEffect(() => {
-        // Retrieve user data from localStorage
-        const userData = {
-            firstName: localStorage.getItem('firstName'),
-            lastName: localStorage.getItem('lastName'),
-            email: localStorage.getItem('email'),
-            batch: localStorage.getItem('batch'),
-            course: localStorage.getItem('course'),
-            branch: localStorage.getItem('branch'),
-            phone: localStorage.getItem('phone') || "N/A",
-        };
+        const email = localStorage.getItem('email'); // Directly get string value, no JSON.parse needed
+        const encodedEmail = encodeURIComponent(email);
 
-        if (userData.email) {
-            setUser(userData); // Set user if data exists in localStorage
+        if (email) {
+            client.get(`profile-student/${encodedEmail}`)
+                .then(response => {
+                    setStudent(response.data);
+                    setLoading(false); // Set loading to false after data is fetched
+                })
+                .catch(error => {
+                    console.log(`Error while fetching student details: ${error}`);
+                    setLoading(false); // Also set loading to false if there's an error
+                });
         } else {
-            navigate('/signin'); // Redirect to sign-in if no user data
+            setLoading(false); // Set loading to false if no email in localStorage
         }
-    }, [navigate]);
+    }, []);
 
-    const handleProfilePicChange = (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                const base64Image = reader.result;
-                setProfilePic(base64Image); // Update the profile picture state
-                localStorage.setItem('profilePic', base64Image); // Save to localStorage
-            };
-            reader.readAsDataURL(file);
-        }
-    };
-
-    if (!user) {
-        return <p>Loading...</p>;
+    // Show loading message while fetching data
+    if (loading) {
+        return <div>Loading...</div>;
     }
+
+    const profilePic = "https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png";
 
     return (
         <div className="container">
@@ -54,15 +49,15 @@ function StudentDetails() {
                     <div className="student-info">
                         <div className="profile-photo">
                             <img src={profilePic} alt="Profile" />
-                            <input type="file" accept="image/*" onChange={handleProfilePicChange} style={{ display: 'none' }} id="upload-profile-pic" />
+                            <input type="file" accept="image/*" style={{ display: 'none' }} id="upload-profile-pic" />
                             <label htmlFor="upload-profile-pic" className="upload-label">Upload</label>
                         </div>
-                        <div className="info">
-                            <p><strong>Batch:</strong> {user.batch}</p>
-                            <p><strong>Phone No:</strong> {user.phone}</p>
-                            <p><strong>Email Address:</strong> {user.email}</p>
-                            <p><strong>Course:</strong> {user.course}</p>
-                            <p><strong>Branch:</strong> {user.branch}</p>
+                        <div className="info" style={{display:"flex", flexDirection:"column", marginLeft:"4rem" , textAlignLast:"left"}}>
+                            <p><strong>Batch:</strong> {student.batch}</p>
+                            <p><strong>Phone No:</strong> +91-{student.phone}</p>
+                            <p><strong>Email:</strong> {student.email}</p>
+                            <p><strong>Course:</strong> {student.course}</p>
+                            <p><strong>Branch:</strong> {student.branch}</p>
                         </div>
                         <div className="attendance-summary">
                             <div className="total-attendance">

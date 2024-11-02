@@ -3,8 +3,8 @@ import '../../styles/student-panel/GreetingSection.css';
 
 function GreetingSection() {
   // Get first and last name from localStorage
-  const firstName = localStorage.getItem('firstName') || 'Sourabh';
-  const lastName = localStorage.getItem('lastName') || '';
+  const firstName = (localStorage.getItem('firstName')) || 'XYZ';
+  const lastName = (localStorage.getItem('lastName')) || '';
 
   // Format current date
   const currentDate = new Date().toLocaleDateString();

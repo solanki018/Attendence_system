@@ -2,12 +2,11 @@ import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/signin.css';
 import { AuthContext } from '../contexts/authContext.js';
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 function SignIn() {
 
-  const { handleLogin, handleRegister, isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
+  const { handleLogin, handleRegister } = useContext(AuthContext);
 
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -28,7 +27,10 @@ function SignIn() {
 
     try {
       let response = await handleLogin({ firstName, lastName, email, password });
-      if (response.status == 200) {
+      if (response.status === 200) {
+        localStorage.setItem('email', email);
+        localStorage.setItem('firstName',firstName);
+        localStorage.setItem('lastName', lastName);
         navigate('/student');
       } else {
         setErrorMessage("Login Failed, Please check credentials");

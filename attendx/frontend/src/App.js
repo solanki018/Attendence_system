@@ -19,7 +19,6 @@ function App() {
           <Route path="/admin/dashboard" element={<AdminPage />} />
           <Route path="/student" element={<StudentPage />} />
           <Route path="/student/profile" element={<ProfileStudent />} /> {/* Add a route for the ProfileStudent component */}
-          <Route path="/signin" element={<SignIn />} />
           <Route path="/dashboard" element={<StudentPage />} />
           <Route path="/profile-student" element={<StudentDetails />} />
           {/* Add more routes as needed */}
