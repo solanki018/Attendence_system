@@ -16,6 +16,7 @@
 .navbar-actions {
   display: flex;
   align-items: center;
+  margin-right: 25px;
 }
 
 .sign-out-button {

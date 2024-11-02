@@ -1,0 +1,58 @@
+.main-dashboard {
+    flex: 1;
+    padding: 20px;
+    background-color: #f9f9f9;
+    margin: 100px 10px 10px 260px;
+  }
+  
+  .stats {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
+  
+  .stat-item {
+    padding: 15px;
+    border-radius: 8px;
+    width: 100px;
+    text-align: center;
+  }
+  
+  .checked-in {
+    background-color: #dff0d8;
+  }
+  
+  .checked-out {
+    background-color: #fcf8e3;
+  }
+  
+  .absent {
+    background-color: #f2dede;
+  }
+  
+  .user-search input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .user-cards {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .user-card {
+    width: 150px;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  .checkout-button {
+    background-color: #f2dede;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+  }
+  

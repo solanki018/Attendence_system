@@ -1,14 +1,22 @@
-// src/pages/AdminPage.js
-import React from 'react';
+// AdminDashboard.js
+import React from "react";
+import Navbar from "./Navbar";
+import SidebarLeft from "./SidebarLeft";
+import SidebarRight from "./SidebarRight";
+import MainDashboard from "./MainDashboard";
+import '../../styles/admin-panel/AdminPage.css';
 
-function AdminPage() {
+function AdminDashboard() {
   return (
-    <div>
-      <h1>Admin Dashboard</h1>
-      <p>Welcome to the AttendX Admin Dashboard!</p>
-      {/* Add more admin functionalities here */}
+    <div className="admin-dashboard">
+      <Navbar />
+      <div className="admin-content">
+        <SidebarLeft />
+        <MainDashboard />
+        <SidebarRight />
+      </div>
     </div>
   );
 }
 
-export default AdminPage;
+export default AdminDashboard;
