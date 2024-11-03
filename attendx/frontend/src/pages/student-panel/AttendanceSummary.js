@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../styles/student-panel/AttendanceSummary.css';
-function AttendanceSummary({ user }) {
+function AttendanceSummary({ student }) {
     return (
         <div className="attendance-summary">
             <div className="summary-box">
@@ -8,8 +8,8 @@ function AttendanceSummary({ user }) {
                 <p>Total Attendance</p>
             </div>
             <div className="summary-box">
-                <h3>2</h3>
-                <p>Total Absents</p>
+                <h3>{student.attendance}</h3>
+                <p>Total Present</p>
             </div>
         </div>
     );

@@ -13,9 +13,10 @@ const client = axios.create({
 
 export const AuthProvider = ({ children }) => {
 
-    const handleRegister = async (name, username, password) => {
+    const handleRegister = async ({formData} ) => {
         try {
-            let request = await client.post("/register", { name, username, password });
+            const {email, password, department, course, phone, batch } = formData;
+            let request = await client.post("/register", { email, password, branch: department, course, phone, batch });
             console.log(request);
             if (request.status === HttpStatus.CREATED) {
                 return request.data.message;  // returned success message !!
@@ -36,6 +37,7 @@ export const AuthProvider = ({ children }) => {
             throw new Error("Error logging in the Student : " , err);
         }
     }
+
 
 
     const [isAuthenticated, setIsAuthenticated] = useState(false);

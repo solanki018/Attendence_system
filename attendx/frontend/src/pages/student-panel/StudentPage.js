@@ -1,5 +1,4 @@
 // MainStudentDashboard.js
-import React, { useEffect, useLayoutEffect } from 'react';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 import GreetingSection from './GreetingSection';

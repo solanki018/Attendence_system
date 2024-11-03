@@ -8,6 +8,8 @@ import ProfileStudent from "./pages/student-panel/ProfileStudent"; // Import the
 import StudentDetails from "./pages/student-panel/StudentDetails";
 import { AuthProvider } from './contexts/authContext';
 import AdminLogin from './pages/AdminLogin';
+import AddStudent from "./pages/admin-panel/AddStudent";
+
 
 function App() {
   return (
@@ -21,6 +23,7 @@ function App() {
           <Route path="/student/profile" element={<ProfileStudent />} /> {/* Add a route for the ProfileStudent component */}
           <Route path="/dashboard" element={<StudentPage />} />
           <Route path="/profile-student" element={<StudentDetails />} />
+          <Route path="/addstudent" element={<AddStudent />} />
           {/* Add more routes as needed */}
         </Routes>
       </AuthProvider>
