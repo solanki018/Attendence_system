@@ -2,6 +2,35 @@ import httpStatus from "http-status";
 import { Students } from "../models/student.registrations.js";
 import bcrypt from "bcrypt";
 
+// we will also send emails along with the attendance updation !!
+import nodemailer from "nodemailer";
+import dotenv from "dotenv";
+dotenv.config();
+
+
+// setting up nodemailer to send email alerts !!
+const transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: false, // true for port 465, false for other ports
+    auth: {
+        user: process.env.EMAIL,
+        pass: process.env.PASSWORD,
+    },
+});
+
+async function sendEmail(receiver, subject, message) {
+    const info = await transporter.sendMail({
+        from: "keshav11y@gmail.com", // sender address
+        to: receiver, // list of receivers
+        subject: subject, // Subject line
+        text: message, // plain text body
+        html: message, // html body
+    });
+
+    console.log("Message sent: %s", info.messageId);
+}
+
 const register = async (req, res) => {
     const { email, password, branch, course, phone, batch } = req.body;
     try {
@@ -49,20 +78,20 @@ const login = async (req, res) => {
 
 // Here we are exporting student details to be shown in the profile section of the student panel
 const getStudentDetails = async (req, res) => {
-    const {email} = req.params;
+    const { email } = req.params;
     const decodedEmail = decodeURIComponent(email);
     console.log(decodedEmail);
     try {
         const studentData = await Students.findOne({ email: decodedEmail });
         return res.status(httpStatus.OK).json(studentData);
     }
-    catch(err) {
+    catch (err) {
         return res.json({ message: `Error in fetching student details: ${err}` });
     }
 }
 
 const takeAttendance = async (req, res) => {
-    const {email} = req.body;
+    const { email } = req.body;
     const decodedEmail = decodeURIComponent(email);
     console.log(`Searching for the studennt : "${email}"`);
     try {
@@ -72,9 +101,10 @@ const takeAttendance = async (req, res) => {
         }
         student.attendance = student.attendance + 1;
         await student.save();
+        await sendEmail(email, "Attendance Update", `Your attendance has been updated to ${student.attendance}. Visit Portal for more details !!`).catch(console.error);
         return res.status(httpStatus.OK).json({ message: "Attendance taken successfully" });
     }
-    catch(err) {
+    catch (err) {
         return res.json({ message: `Error in taking attendance: ${err}` });
     }
 }

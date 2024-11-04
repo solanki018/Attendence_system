@@ -5,6 +5,7 @@ import cors from "cors"; // It is required as we're sending request from differe
 const port = 8080;
 
 
+
 import bodyParser from "body-parser";
 import { router } from "./src/routes/user.routes.js";
 

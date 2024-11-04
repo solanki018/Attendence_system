@@ -40,7 +40,7 @@ function AddStudent() {
                 required
               />
             </div>
-            <button type="submit" className="add-student-button">Add User</button>
+            <button type="submit" className="add-student-button">Mark Attendance</button>
           </form>
         </div>
       </div>
