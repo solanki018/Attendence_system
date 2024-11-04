@@ -9,6 +9,7 @@ import StudentDetails from "./pages/student-panel/StudentDetails";
 import { AuthProvider } from './contexts/authContext';
 import AdminLogin from './pages/AdminLogin';
 import AddStudent from "./pages/admin-panel/AddStudent";
+import ManualAttendance from "./pages/admin-panel/ManualAttendance";
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path="/dashboard" element={<StudentPage />} />
           <Route path="/profile-student" element={<StudentDetails />} />
           <Route path="/addstudent" element={<AddStudent />} />
+          <Route path="/manual-attendance" element={<ManualAttendance />} />
           {/* Add more routes as needed */}
         </Routes>
       </AuthProvider>

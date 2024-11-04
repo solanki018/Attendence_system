@@ -7,13 +7,12 @@ import AttendanceHistory from './AttendanceHistory';
 import '../../styles/student-panel/ProfileStudent.css';
 
 function ProfileStudent({ user }) {
-    const hello = {"email" : "keshav11y"}
     return (
         <div className="profile-student-container">
             <Sidebar />
             <div className="profile-content">
                 <Navbar />
-                <StudentDetails user={hello} />
+                <StudentDetails user={user} />
                 <AttendanceSummary user={user} />
                 <AttendanceHistory />
             </div>

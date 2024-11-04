@@ -25,7 +25,7 @@ function Navbar() {
     sessionStorage.clear();
 
     // Redirect to sign-in page
-    navigate("/signin");
+    navigate("/");
   };
 
   return (

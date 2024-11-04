@@ -61,4 +61,22 @@ const getStudentDetails = async (req, res) => {
     }
 }
 
-export { login, register, getStudentDetails };
+const takeAttendance = async (req, res) => {
+    const {email} = req.body;
+    const decodedEmail = decodeURIComponent(email);
+    console.log(`Searching for the studennt : "${email}"`);
+    try {
+        const student = await Students.findOne({ email: decodedEmail });
+        if (!student) {
+            return res.status(httpStatus.NOT_FOUND).json({ message: "Student not found" });
+        }
+        student.attendance = student.attendance + 1;
+        await student.save();
+        return res.status(httpStatus.OK).json({ message: "Attendance taken successfully" });
+    }
+    catch(err) {
+        return res.json({ message: `Error in taking attendance: ${err}` });
+    }
+}
+
+export { login, register, getStudentDetails, takeAttendance };

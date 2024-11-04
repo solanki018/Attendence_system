@@ -33,6 +33,21 @@ function StudentDetails() {
         }
     }, []);
 
+    const [totalAttendance, setTotalAttendance] = useState(0);
+
+    useEffect(() => {
+        client.post("/show-admin-attendance")
+            .then(response => {
+                console.log(response.data.totalAttendance);
+                setTotalAttendance(response.data.totalAttendance);
+            })
+            .catch(error => {
+                console.log(`Error while fetching attendance: ${error}`);
+            });
+    }, []);
+
+
+
     // Show loading message while fetching data
     if (loading) {
         return <div>Loading...</div>;
@@ -52,7 +67,7 @@ function StudentDetails() {
                             <input type="file" accept="image/*" style={{ display: 'none' }} id="upload-profile-pic" />
                             <label htmlFor="upload-profile-pic" className="upload-label">Upload</label>
                         </div>
-                        <div className="info" style={{display:"flex", flexDirection:"column", marginLeft:"4rem" , textAlignLast:"left"}}>
+                        <div className="info" style={{ display: "flex", flexDirection: "column", marginLeft: "4rem", textAlignLast: "left" }}>
                             <p><strong>Batch:</strong> {student.batch}</p>
                             <p><strong>Phone No:</strong> +91-{student.phone}</p>
                             <p><strong>Email:</strong> {student.email}</p>
@@ -61,12 +76,12 @@ function StudentDetails() {
                         </div>
                         <div className="attendance-summary">
                             <div className="total-attendance">
-                                <p>20</p>
+                                <p>{totalAttendance}</p>
                                 <span>Total Attendance</span>
                             </div>
                             <div className="total-absents">
-                                <p>2</p>
-                                <span>Total Absents</span>
+                                <p>{student.attendance}</p>
+                                <span>Total Presents</span>
                             </div>
                         </div>
                     </div>
