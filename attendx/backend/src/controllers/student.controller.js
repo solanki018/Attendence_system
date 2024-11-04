@@ -102,6 +102,7 @@ const takeAttendance = async (req, res) => {
         student.attendance = student.attendance + 1;
         await student.save();
         await sendEmail(email, "Attendance Update", `Your attendance has been updated to ${student.attendance}. Visit Portal for more details !!`).catch(console.error);
+        await sendEmail(process.env.ADMIN_EMAIL, "Attendance Update", `${student.email} is present in class. The updated attendance of the student is  ${student.attendance}`).catch(console.error);
         return res.status(httpStatus.OK).json({ message: "Attendance taken successfully" });
     }
     catch (err) {
