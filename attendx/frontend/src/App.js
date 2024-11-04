@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SignIn from './pages/SignIn';
 import AdminPage from './pages/admin-panel/AdminPage';
 import StudentPage from './pages/student-panel/StudentPage';
-import ProfileStudent from "./pages/student-panel/ProfileStudent"; // Import the ProfileStudent component
 import StudentDetails from "./pages/student-panel/StudentDetails";
 import { AuthProvider } from './contexts/authContext';
 import AdminLogin from './pages/AdminLogin';
@@ -17,16 +16,14 @@ function App() {
     <Router>
       <AuthProvider >
         <Routes>
-          <Route path="/" element={<SignIn />} />
-          <Route path="/admin" element={<AdminLogin />} />
-          <Route path="/admin/dashboard" element={<AdminPage />} />
-          <Route path="/student" element={<StudentPage />} />
-          <Route path="/student/profile" element={<ProfileStudent />} /> {/* Add a route for the ProfileStudent component */}
-          <Route path="/dashboard" element={<StudentPage />} />
+          <Route path="/" element={<SignIn />} /> {/* Path for student attendance" */}
+          <Route path="/admin" element={<AdminLogin />} /> {/* Path for admin attendance" */}
+          <Route path="/admin/dashboard" element={<AdminPage />} /> {/* Path for admin dashboard */}
+          <Route path="/student" element={<StudentPage />} />     {/* Main Dashboard of student page */}
           <Route path="/profile-student" element={<StudentDetails />} />
           <Route path="/addstudent" element={<AddStudent />} />
           <Route path="/manual-attendance" element={<ManualAttendance />} />
-          {/* Add more routes as needed */}
+          
         </Routes>
       </AuthProvider>
     </Router>

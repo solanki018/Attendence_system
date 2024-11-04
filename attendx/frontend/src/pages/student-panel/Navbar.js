@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../../styles/student-panel/Navbar.css";
 
-function Navbar() {
+function Navbar({studentData}) {
   const navigate = useNavigate();
   const [profilePic, setProfilePic] = useState(localStorage.getItem("profilePic")); // Load profile picture from localStorage
 

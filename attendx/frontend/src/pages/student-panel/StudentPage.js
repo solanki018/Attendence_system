@@ -11,7 +11,7 @@ function StudentPage() {
   return (
     <div className="dashboard-container">
       <Sidebar />
-      <div className="main-content">  
+      <div className="main-content">
         <Navbar />
         <GreetingSection />
         <div className="content-row">

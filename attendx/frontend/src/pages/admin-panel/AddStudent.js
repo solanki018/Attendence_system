@@ -7,6 +7,7 @@ import { AuthContext } from "../../contexts/authContext";
 
 function AddStudent() {
   const { handleRegister } = React.useContext(AuthContext);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -26,6 +27,14 @@ function AddStudent() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!formData.firstName || !formData.lastName || !formData.email || !formData.password || !formData.confirmPassword || !formData.department || !formData.course || !formData.batch || !formData.phone) {
+      setErrorMessage("Please fill all the fields !!");
+      return;
+    };
+    if (formData.password !== formData.confirmPassword) {
+      setErrorMessage("Passwords do not match !!");
+      return;
+    }
     handleRegister({ formData });
 
     console.log("Student data submitted:", formData);
@@ -37,7 +46,7 @@ function AddStudent() {
       <div className="add-student-content">
         <Navbar />
         <div className="add-student-container">
-          <h2>Add User</h2>
+          <h2>Register a Student</h2>
           <form onSubmit={handleSubmit} className="add-student-form">
             <div className="form-group">
               <input
@@ -46,7 +55,6 @@ function AddStudent() {
                 placeholder="First name"
                 value={formData.firstName}
                 onChange={handleChange}
-                required
               />
               <input
                 type="text"
@@ -54,7 +62,6 @@ function AddStudent() {
                 placeholder="Last name"
                 value={formData.lastName}
                 onChange={handleChange}
-                required
               />
             </div>
             <div className="form-group">
@@ -64,7 +71,6 @@ function AddStudent() {
                 placeholder="Email"
                 value={formData.email}
                 onChange={handleChange}
-                required
               />
             </div>
             <div className="form-group">
@@ -74,7 +80,6 @@ function AddStudent() {
                 placeholder="Password"
                 value={formData.password}
                 onChange={handleChange}
-                required
               />
               <input
                 type="password"
@@ -82,7 +87,6 @@ function AddStudent() {
                 placeholder="Confirm Password"
                 value={formData.confirmPassword}
                 onChange={handleChange}
-                required
               />
             </div>
             <div className="form-group">
@@ -92,7 +96,6 @@ function AddStudent() {
                 placeholder="Department"
                 value={formData.department}
                 onChange={handleChange}
-                required
               />
               <input
                 type="text"
@@ -100,7 +103,6 @@ function AddStudent() {
                 placeholder="Course"
                 value={formData.course}
                 onChange={handleChange}
-                required
               />
             </div>
             <div className="form-group">
@@ -110,7 +112,6 @@ function AddStudent() {
                 placeholder="Batch"
                 value={formData.batch}
                 onChange={handleChange}
-                required
               />
             </div>
             <div className="form-group">
@@ -120,10 +121,10 @@ function AddStudent() {
                 placeholder="Phone Number"
                 value={formData.phone}
                 onChange={handleChange}
-                required
               />
             </div>
-            <button type="submit" className="add-student-button">Add User</button>
+            {errorMessage && <p style={{ color: "red" }} className="error-message">{errorMessage}</p>}
+            <button type="submit" className="add-student-button">Register</button>
           </form>
         </div>
       </div>

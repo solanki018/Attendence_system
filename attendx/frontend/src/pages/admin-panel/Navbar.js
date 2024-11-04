@@ -15,7 +15,7 @@ function Navbar() {
     <div className="navbar">
       <h1>AttendX</h1>
       <div className="navbar-actions">
-        <button onClick={handleSignOut}>Sign out</button>
+        <button style={{marginBottom:"1rem"}} onClick={handleSignOut}>Sign out</button>
         {/* <Link to="/profile-student" className="profile-initials">
           <span>MK</span> {/* Profile initials </Link> */}
       </div>

@@ -2,6 +2,7 @@
 import React from 'react';
 import '../../styles/student-panel/AttendanceOverview.css';
 
+
 function AttendanceOverview() {
   return (
     <div className="attendance-overview">
@@ -9,7 +10,7 @@ function AttendanceOverview() {
       <div className="attendance-box">Check-out: 7:41 PM</div>
       <div className="attendance-progress">
         <p>This month</p>
-        <div className="progress-circle">14%</div>
+        <div className="progress-circle">100%</div>
       </div>
     </div>
   );

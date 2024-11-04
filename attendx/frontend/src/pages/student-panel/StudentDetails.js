@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 import '../../styles/student-panel/StudentDetails.css';
@@ -45,8 +44,6 @@ function StudentDetails() {
                 console.log(`Error while fetching attendance: ${error}`);
             });
     }, []);
-
-
 
     // Show loading message while fetching data
     if (loading) {
