@@ -9,7 +9,7 @@ function AddStudent() {
   const { handleRegister } = React.useContext(AuthContext);
   const [errorMessage, setErrorMessage] = useState(null);
 
-  const [formData, setFormData] = useState({
+  const initialFormData = {
     firstName: "",
     lastName: "",
     email: "",
@@ -19,7 +19,9 @@ function AddStudent() {
     course: "",
     batch: "",
     phone: "",
-  });
+  }
+
+  const [formData, setFormData] = useState(initialFormData);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -36,6 +38,8 @@ function AddStudent() {
       return;
     }
     handleRegister({ formData });
+    window.alert("Student registered successfully !!");
+    setFormData(initialFormData);
 
     console.log("Student data submitted:", formData);
   };

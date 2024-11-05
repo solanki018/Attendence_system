@@ -85,13 +85,15 @@ function StudentDetails() {
 
                     <div className="attendance-history">
                         <h3>Attendance History</h3>
-                        <div className="history-item">
-                            <p>Nov 1, 2023</p>
-                            <div className="time">
-                                <span>Check In Time: 1:30 PM</span>
-                                <span>Check Out Time: 10:30 PM</span>
+                        {student.attendanceLog.map((log, index) => (
+                            <div key={index} className="history-item">
+                                <p>{log.date}</p>
+                                <div className="time">
+                                    <span>Check In Time: {log.checkInTime ? log.checkInTime : "--"}</span>
+                                    <span>Check Out Time: {log.checkOutTime ? log.checkOutTime : "--"}</span>
+                                </div>
                             </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </div>

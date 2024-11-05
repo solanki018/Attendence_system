@@ -16,7 +16,7 @@ function AddStudent() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("This is student's entry : ", entry);
+    // console.log("This is student's entry : ", entry);
     try {
       await handleManualAttendance(entry);
     }
@@ -25,7 +25,7 @@ function AddStudent() {
       return;
     }
     window.alert(`Attendance marked for ${entry} successfully !!`);
-    console.log("Student data submitted:", entry);
+    // console.log("Student data submitted:", entry);
   };
 
   return (

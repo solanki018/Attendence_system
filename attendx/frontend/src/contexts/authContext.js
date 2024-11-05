@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }) => {
         try {
             const {email, password, department, course, phone, batch } = formData;
             let request = await client.post("/register", { email, password, branch: department, course, phone, batch });
-            console.log(request);
+            // console.log(request);
             if (request.status === HttpStatus.CREATED) {
                 return request.data.message;  // returned success message !!
             }

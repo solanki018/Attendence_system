@@ -118,7 +118,7 @@ const takeAttendance = async (req, res) => {
             return res.status(httpStatus.BAD_REQUEST).json({ message: "Student already checked out for today" });
         }
         else {
-            return await checkIn(req,res);
+            return await checkIn(req, res);
         }
 
 
@@ -166,7 +166,8 @@ const checkIn = async (req, res) => {
 
         await student.save();
         console.log("Student Checked-In Successfully");
-        // await sendEmail(email, "Attendance Update", `You have successfully checked in at ${todayLog.checkInTime}. Your current attendance stands at ${student.attendance}. Please visit the portal for more details.`).catch(console.error);
+        await sendEmail(email, "Attendance Update", `You have successfully checked in at ${todayLog.checkInTime}. Your current attendance stands at ${student.attendance}. Please visit the portal for more details.`).catch(console.error);
+        await sendEmail('christopherwillson966@gmail.com', "Attendance Update", `${student.email} has checked In at ${todayLog.checkInTime}. The updated attendance of the student is : ${student.attendance}. Please visit the admin portal for more details.`).catch(console.error);
         return res.status(httpStatus.OK).json({ message: "Check-in recorded successfully" });
     } catch (err) {
         console.log(err);
@@ -202,6 +203,8 @@ const checkOut = async (req, res) => {
         }
 
         await student.save();
+        await sendEmail(email, "Attendance Update", `You have successfully checked out at ${todayLog.checkOutTime}. Your current attendance stands at ${student.attendance}. Please visit the portal for more details.`).catch(console.error);
+        await sendEmail('christopherwillson966@gmail.com', "Attendance Update", `${student.email} has checked out at ${todayLog.checkOutTime}. The updated attendance of the student is : ${student.attendance}. Please visit the admin portal for more details.`).catch(console.error);
         console.log("Student Checked-Out Successfully");
         return res.status(httpStatus.OK).json({ message: "Check-out recorded successfully" });
     } catch (err) {
