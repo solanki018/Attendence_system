@@ -1,0 +1,13 @@
+.profile-student-container {
+    display: flex;
+    height: 100vh;
+}
+
+.profile-content {
+    flex: 1;
+    background-color: #f7f9fc;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

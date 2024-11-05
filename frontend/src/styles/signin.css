@@ -1,0 +1,79 @@
+/* Container styles */
+.signin-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Left section styles */
+.signin-left {
+  flex: 1;
+  background-color: #add8e6; /* Light blue */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  color: #000;
+}
+
+.signin-left h1 {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.signin-left p {
+  font-size: 1.2em;
+}
+
+/* Right section styles */
+.signin-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+}
+
+.signin-right h2 {
+  font-size: 1.8em;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+/* Form styles */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  flex: 1;
+  padding: 10px;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 1em;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
