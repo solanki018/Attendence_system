@@ -25,6 +25,7 @@ const handleManualAttendance = async (entry) => {
         return request.data.message;
     }
     catch(err) {
+        window.alert("Student has already check-out today !!");
         throw new Error(err || "Error in taking attendance");
     }
 }

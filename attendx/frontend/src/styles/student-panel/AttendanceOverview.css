@@ -7,7 +7,8 @@
   
   .attendance-box {
     background-color: #cce5ff;
-    padding: 20px;
+    width:6rem;
+    padding:25px;
     border-radius: 8px;
     color: #333;
     flex: 1;

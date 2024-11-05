@@ -11,13 +11,19 @@ function AddStudent() {
   const [entry, setEntry] = useState("");
 
   const handleChange = (e) => {
-    setEntry( e.target.value);
+    setEntry(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("This is student's entry : ", entry);
-    handleManualAttendance(entry);
+    try {
+      await handleManualAttendance(entry);
+    }
+    catch(err) {
+      console.log(err);
+      return;
+    }
     window.alert(`Attendance marked for ${entry} successfully !!`);
     console.log("Student data submitted:", entry);
   };
