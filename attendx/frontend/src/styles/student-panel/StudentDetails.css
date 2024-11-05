@@ -1,0 +1,203 @@
+/* General container styling for the main layout */
+.container {
+    display: flex;
+    height: 100vh;
+    background-color: #f5f7fa;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 250px;
+    background-color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    min-height: 100vh;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    color: #333;
+    padding: 15px 20px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.sidebar-link:hover {
+    background-color: #e2e6ea;
+}
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #d3e0fa;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: calc(100% - 250px);
+    position: fixed;
+    top: 0;
+    left: 250px;
+}
+
+/* StudentDetails Styles */
+.student-details {
+    margin-top: 80px;
+    padding: 20px;
+    width: calc(90%); /* Adjust for sidebar */
+    margin-left: auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header h2 {
+    font-size: 24px;
+    color: #333;
+}
+
+.sign-out-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.sign-out-button:hover {
+    background-color: #0056b3;
+}
+
+.student-info {
+    display: flex;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    align-items: center;
+}
+
+.profile-photo img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.info p {
+    margin: 5px 0;
+    color: #555;
+    font-size: 16px;
+}
+
+.attendance-summary {
+    display: flex;
+    gap: 20px;
+    margin-left: auto;
+}
+
+.attendance-summary .total-attendance,
+.attendance-summary .total-absents {
+    background-color: #f0f2f5;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    width: 100px;
+}
+
+.attendance-summary p {
+    font-size: 20px;
+    color: #333;
+    margin: 0;
+}
+
+.attendance-summary span {
+    font-size: 14px;
+    color: #777;
+}
+
+.attendance-history {
+    margin-top: 20px;
+}
+
+.attendance-history h3 {
+    font-size: 20px;
+    color: #333;
+}
+
+.history-item {
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+}
+
+.history-item p {
+    font-size: 16px;
+    color: #007bff;
+    margin: 0;
+}
+
+.time span {
+    display: block;
+    font-size: 14px;
+    color: #555;
+}
+/* Wrapper for Sidebar and main content */
+.container {
+    display: flex;
+    height: 100vh;
+    background-color: #f5f7fa;
+}
+
+/* Main content area beside Sidebar */
+.content {
+    flex-grow: 1;
+    /* margin-left: 2px; Adjust based on Sidebar width */
+    /* padding: 20px; */
+    background-color: #f5f7fa;
+}
+.profile-photo {
+    position: relative;
+    margin-right: 20px;
+    text-align: center;
+}
+
+.profile-photo img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.upload-label {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 6px 12px;
+    background-color: #007bff;
+    color: #ffffff;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.upload-label:hover {
+    background-color: #0056b3;
+}
