@@ -2,7 +2,7 @@
 import React from "react";
 import '../../styles/admin-panel/MainDashboard.css';
 
-function MainDashboard() {
+function MainDashboard({ studentData }) {
   return (
     <div className="main-dashboard">
       <div className="stats">
@@ -14,14 +14,17 @@ function MainDashboard() {
         <input type="text" placeholder="Search" />
       </div>
       <div className="user-cards">
-        <div className="user-card">
-          <img src="path-to-profile-picture.jpg" alt="User" />
-          <h4>John Doe</h4>
-          <p>john@example.com</p>
-          <button className="checkout-button">Check Out 5:00 PM</button>
-        </div>
-        {/* Repeat user cards as needed */}
+        {studentData.map((student, index) => (
+          <div style={{lineHeight:"0.5rem", paddingRight:"2rem", paddingBottom:"1.5rem"}} key={index} className="user-card">
+            <img style={{height:"7rem"}} src={require("./dummyProfile.png")} alt="user"></img>
+            <p>{student.email}</p>
+            <p style={{textAlign:"left"}}>Check-In : {student.attendanceLog[0].checkInTime ? student.attendanceLog[0].checkInTime : "--"}</p>
+            <p style={{textAlign:"left"}}>Check-out : {student.attendanceLog[0].checkOutTime ? student.attendanceLog[0].checkOutTime : "--"}</p>
+            <button className="checkout-button">Remove Student</button>
+          </div>
+        ))}
       </div>
+
     </div>
   );
 }

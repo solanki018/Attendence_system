@@ -77,6 +77,17 @@ const login = async (req, res) => {
     }
 }
 
+const getStudentData  = async (req,res) => {
+    try {
+        const studentData = await Students.find({});
+        return res.status(httpStatus.OK).json(studentData);
+    }
+    catch(err) {
+        console.log(err);
+        return res.json({ message: `Error in fetching student data : ${err}` });
+    }
+}
+
 // Here we are exporting student details to be shown in the profile section of the student panel
 const getStudentDetails = async (req, res) => {
     const { email } = req.params;
@@ -214,4 +225,4 @@ const checkOut = async (req, res) => {
 };
 
 
-export { login, register, getStudentDetails, takeAttendance };
+export { login, register, getStudentDetails, takeAttendance, getStudentData };
