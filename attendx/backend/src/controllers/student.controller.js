@@ -77,12 +77,12 @@ const login = async (req, res) => {
     }
 }
 
-const getStudentData  = async (req,res) => {
+const getStudentData = async (req, res) => {
     try {
         const studentData = await Students.find({});
         return res.status(httpStatus.OK).json(studentData);
     }
-    catch(err) {
+    catch (err) {
         console.log(err);
         return res.json({ message: `Error in fetching student data : ${err}` });
     }
@@ -131,13 +131,6 @@ const takeAttendance = async (req, res) => {
         else {
             return await checkIn(req, res);
         }
-
-
-        // student.attendance = student.attendance + 1;
-        // await student.save();
-        // await sendEmail(email, "Attendance Update", `Your attendance has been updated to ${student.attendance}. Visit Portal for more details !!`).catch(console.error);
-        // await sendEmail(process.env.ADMIN_EMAIL, "Attendance Update", `${student.email} is present in class. The updated attendance of the student is  ${student.attendance}`).catch(console.error);
-        // return res.status(httpStatus.OK).json({ message: "Attendance taken successfully" });
     }
     catch (err) {
         console.log(err);
@@ -224,5 +217,23 @@ const checkOut = async (req, res) => {
     }
 };
 
+// here we will write the logic to delete the student from the database.
+const deleteStudent = async (req,res) => {
+    const {email} = req.params;
+    const decodedEmail = decodeURIComponent(email);
+    console.log(`Deleting the student : ${decodedEmail}`);
+    try {
+        const student = await Students.find({email: decodedEmail});
+        if(!student) {
+            return res.status(httpStatus.NOT_FOUND).json({message: "Student not found"});
+        }
+        await Students.deleteOne({email: decodedEmail});
+        return res.status(httpStatus.OK).json({message: "Student deleted successfully"});
+    }
+    catch(err) {
+        console.log(`Error while deleting the student from db : `, err);
+    }
+}
 
-export { login, register, getStudentDetails, takeAttendance, getStudentData };
+
+export { login, register, getStudentDetails, takeAttendance, getStudentData, deleteStudent };

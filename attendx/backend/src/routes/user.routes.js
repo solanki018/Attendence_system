@@ -1,5 +1,5 @@
 import { Router } from "express";
-import {register, login, getStudentDetails, takeAttendance, getStudentData} from "../controllers/student.controller.js";
+import {register, login, getStudentDetails, takeAttendance, getStudentData, deleteStudent} from "../controllers/student.controller.js";
 import {takeAdminAttendance, showAdminAttendance} from "../controllers/admin.controller.js";
 
 const router = Router();
@@ -12,5 +12,6 @@ router.route("/get-student-details").post(getStudentData); // will retrieve all 
 router.route("/take-attendance").post(takeAttendance);
 router.route("/take-attendance/admin").post(takeAdminAttendance);
 router.route("/show-admin-attendance").post(showAdminAttendance);
+router.route("/delete-student/:email").delete(deleteStudent);
 
 export {router};

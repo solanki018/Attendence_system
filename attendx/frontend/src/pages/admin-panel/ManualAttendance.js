@@ -4,11 +4,13 @@ import Navbar from "./Navbar";
 import Sidebar from "./SidebarLeft";
 import '../../styles/admin-panel/AddStudent.css';
 import { handleManualAttendance } from "../../contexts/adminAttendance";
+import loader from "./loader";
 
 
 function AddStudent() {
 
   const [entry, setEntry] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setEntry(e.target.value);
@@ -18,18 +20,27 @@ function AddStudent() {
     e.preventDefault();
     // console.log("This is student's entry : ", entry);
     try {
+      setLoading(true);
       await handleManualAttendance(entry);
+      setLoading(false);
     }
-    catch(err) {
+    catch (err) {
       console.log(err);
+      setLoading(false);
       return;
     }
-    window.alert(`Attendance marked for ${entry} successfully !!`);
-    // console.log("Student data submitted:", entry);
+    setEntry("");
+    setTimeout(() => {
+      window.alert(`Attendance marked for ${entry} successfully !!`);
+      setEntry("");
+    }, 200);
   };
 
+
   return (
+
     <div className="add-student-page">
+      {loading && loader()}
       <Sidebar />
       <div className="add-student-content">
         <Navbar />
