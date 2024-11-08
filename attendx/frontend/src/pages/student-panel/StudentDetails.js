@@ -5,7 +5,8 @@ import '../../styles/student-panel/StudentDetails.css';
 import axios from 'axios';
 
 const client = axios.create({
-    baseURL: "http://localhost:8080",
+    // baseURL: "http://localhost:8080",
+    baseURL : "https://attendx-0z49.onrender.com/",
 });
 
 function StudentDetails() {

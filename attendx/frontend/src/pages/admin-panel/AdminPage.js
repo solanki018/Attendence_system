@@ -9,7 +9,8 @@ import axios from "axios";
 import { useEffect } from "react";
 
 const client = axios.create({
-  baseURL : "http://localhost:8080/",
+  // baseURL : "http://localhost:8080/",
+  baseURL : "https://attendx-0z49.onrender.com/",
 })
 
 function AdminDashboard() {
