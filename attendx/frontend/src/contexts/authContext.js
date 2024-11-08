@@ -8,7 +8,7 @@ import HttpStatus from "http-status";
 export const AuthContext = createContext({});
 
 const client = axios.create({
-    baseURL: "http://localhost:8080",
+    baseURL: "https://attendx-0z49.onrender.com/",
 });
 
 export const AuthProvider = ({ children }) => {
