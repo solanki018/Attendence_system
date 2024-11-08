@@ -9,8 +9,8 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 const client = axios.create({
-  // baseURL: "http://localhost:8080",
-  baseURL : "https://attendx-0z49.onrender.com/",
+  baseURL: "http://localhost:8080",
+  // baseURL : "https://attendx-0z49.onrender.com/",
 });
 
 
