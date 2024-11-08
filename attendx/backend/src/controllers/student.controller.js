@@ -1,6 +1,6 @@
 import httpStatus from "http-status";
 import { Students } from "../models/student.registrations.js";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 
 // we will also send emails along with the attendance updation !!
 import nodemailer from "nodemailer";
