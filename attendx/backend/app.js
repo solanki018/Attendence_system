@@ -11,6 +11,14 @@ import { router } from "./src/routes/user.routes.js";
 
 app.use(express.json({ limit: "40kb" }));
 app.use(cors());
+app.use(function async (req,res) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header(
+        "Access-Control-Allow-Methods",
+        "GET, POST, OPTIONS, PUT, PATCH, DELETE",
+    )
+})
+
 app.use(bodyParser.json()); // Make sure this is present
 app.use(express.urlencoded({ limit: "40kb", extended: true }));
 app.use(router);
