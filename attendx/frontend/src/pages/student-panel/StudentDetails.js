@@ -65,23 +65,26 @@ function StudentDetails() {
                             <input type="file" accept="image/*" style={{ display: 'none' }} id="upload-profile-pic" />
                             <label htmlFor="upload-profile-pic" className="upload-label">Upload</label>
                         </div>
-                        <div className="info" style={{ display: "flex", flexDirection: "column", marginLeft: "4rem", textAlignLast: "left" }}>
-                            <p><strong>Batch:</strong> {student.batch}</p>
-                            <p><strong>Phone No:</strong> +91-{student.phone}</p>
-                            <p><strong>Email:</strong> {student.email}</p>
-                            <p><strong>Course:</strong> {student.course}</p>
-                            <p><strong>Branch:</strong> {student.branch}</p>
-                        </div>
-                        <div className="attendance-summary">
-                            <div className="total-attendance">
-                                <p>{totalAttendance}</p>
-                                <span>Total Attendance</span>
+                        <div className="studentBioData">
+                            <div className="info">
+                                <p><strong>Batch:</strong> {student.batch}</p>
+                                <p><strong>Phone No:</strong> +91-{student.phone}</p>
+                                <p><strong>Email:</strong> {student.email}</p>
+                                <p><strong>Course:</strong> {student.course}</p>
+                                <p><strong>Branch:</strong> {student.branch}</p>
                             </div>
-                            <div className="total-absents">
-                                <p>{student.attendance}</p>
-                                <span>Total Presents</span>
+                            <div className="attendance-summary">
+                                <div className="total-attendance">
+                                    <p>{totalAttendance}</p>
+                                    <span>Total Attendance</span>
+                                </div>
+                                <div className="total-absents">
+                                    <p>{student.attendance}</p>
+                                    <span>Total Presents</span>
+                                </div>
                             </div>
                         </div>
+
                     </div>
 
                     <div className="attendance-history">

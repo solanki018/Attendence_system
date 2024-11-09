@@ -3,7 +3,6 @@ import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 import GreetingSection from './GreetingSection';
 import AttendanceOverview from './AttendanceOverview';
-import Alerts from './Alerts';
 import '../../styles/student-panel/studentpage.css';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
@@ -59,16 +58,19 @@ function StudentPage() {
 
   return (
     <div className="dashboard-container">
-      <Sidebar />
-      <div className="main-content">
-        <Navbar />
-        <GreetingSection />
-        <div className="content-row">
-          <AttendanceOverview student={student} totalAttendance={totalAttendance}/>
-          <AttendancePieChart student={student} totalAttendance={totalAttendance} />
+        <Sidebar />
+        <div style={{overflow:"hidden"}}>
+          <Navbar />
+          <div className="main-content">
+            <GreetingSection />
+            <div className="content-row">
+              <AttendanceOverview student={student} totalAttendance={totalAttendance} />
+              <AttendancePieChart student={student} totalAttendance={totalAttendance} />
+            </div>
+          </div>
+
         </div>
       </div>
-    </div>
   );
 }
 

@@ -6,6 +6,13 @@
   padding: 10px 20px;
   background-color: #d3e0fa; /* Light blue background */
   height:65px;
+  z-index: 1000;
+  position:fixed;
+  left:20%;
+  width:80%;
+  position: fixed;
+  top:0;
+  transition: 0.2s 0.5s ease;
 }
 
 .navbar h1 {
@@ -25,31 +32,18 @@
   margin-bottom: 1rem;
   font-weight: bold;
 }
-
+  
 .sign-out-button:hover {
   background-color: #0056b3; /* Darker shade on hover */
 }
 
-
-/* Profile Initials */
-/* .profile-initials {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #333;
-  color: white;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  font-size: 18px;
-  text-align: center;
-  font-weight: bold;
-} */
-
-/* Profile Picture */
-/* .navbar-profile-pic {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  object-fit: cover;
-} */
+/* making it responsive */
+@media(max-width: 920px) {
+  .navbar {
+    position:fixed;
+    width: 90vw;
+    left: 0;
+    padding-left: 60px;
+    /* Adjust for space with burger icon */
+  }
+}

@@ -1,19 +1,23 @@
 /* sidebar.css */
 .sidebar {
-  width: 250px;
-  background-color: #f8f9fa; /* Light background color for sidebar */
+  width: 20%;
+  background-color: #f8f9fa;
   display: flex;
   flex-direction: column;
   padding-top: 20px;
   padding-bottom: 20px;
-  min-height: 100vh; /* Extend sidebar to full height */
+  height: 100vh;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  left: 0;
+  top: 0;
+  transition: transform 0.3s ease;
 }
 
 .sidebar-link {
   display: flex;
   align-items: center;
-  color: #333; /* Darker color for text */
+  color: #333;
   padding: 15px 20px;
   text-decoration: none;
   font-size: 16px;
@@ -22,10 +26,38 @@
 }
 
 .sidebar-link:hover {
-  background-color: #e2e6ea; /* Hover effect with light shade */
+  background-color: #e2e6ea;
 }
 
 .sidebar-link i {
   margin-right: 10px;
   font-size: 18px;
+}
+
+/* Hide sidebar on screens smaller than 920px */
+@media (max-width: 920px) {
+  .sidebar {
+    transform: translateX(-150%); /* Hide sidebar off-screen */
+    padding-top: 50px;
+    width:40vw !important;
+    min-width: 200px;
+  }
+
+  /* Show sidebar when the 'open' class is added */
+  .sidebar.open {
+    transform: translateX(0);
+    width: 60%; /* Smaller width for mobile */
+    z-index: 1005;
+  }
+
+  /* Burger icon styling */
+  .burger-icon {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+    z-index: 1100; /* Above other elements */
+  }
 }
