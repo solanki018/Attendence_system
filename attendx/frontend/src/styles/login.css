@@ -99,3 +99,14 @@ p a {
   color: #007bff;
   text-decoration: none;
 }
+
+/* Let's make it responsive */
+@media (max-width: 916px) {
+  .login-container {
+    flex-direction: column;
+    height:80vh;
+  }
+  .login-left h1 {
+    font-size: 22px;
+  }
+}

@@ -36,7 +36,7 @@
 }
 
 .signin-right h2 {
-  font-size: 1.8em;
+  font-size: 24px;
   color: #444;
   margin-bottom: 20px;
 }
@@ -76,4 +76,18 @@ button {
 
 button:hover {
   background-color: #0056b3;
+}
+
+/* Let's make it responsive */
+@media (max-width: 916px) {
+  .signin-container {
+    flex-direction: column;
+    height:80vh;
+  }
+  .signin-left{
+    font-size: 11px;
+  }
+  .form-row {
+    flex-direction: column;
+  }
 }
