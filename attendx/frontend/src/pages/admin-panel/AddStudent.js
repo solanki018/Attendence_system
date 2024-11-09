@@ -37,6 +37,7 @@ function AddStudent() {
       setErrorMessage("Passwords do not match !!");
       return;
     }
+    setErrorMessage("");
     handleRegister({ formData });
     window.alert("Student registered successfully !!");
     setFormData(initialFormData);
