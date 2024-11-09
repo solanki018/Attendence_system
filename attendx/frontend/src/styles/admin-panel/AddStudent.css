@@ -2,6 +2,7 @@
 
 .add-student-page {
   display: flex;
+  width:100vw;
 }
 
 .add-student-content {
@@ -11,12 +12,15 @@
 }
 
 .add-student-container {
-  width: 100%;
+  width: 80vw;
+  position:relative;
+  left:10vw;
   max-width: 700px;
   margin: 100px auto;
   background-color: #f9f9f9;
   padding: 20px;
   border-radius: 8px;
+  overflow-x: hidden;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -43,6 +47,7 @@
   font-size: 1em;
   border: 1px solid #ddd;
   border-radius: 5px;
+
 }
 
 .add-student-button {
@@ -58,4 +63,28 @@
 
 .add-student-button:hover {
   background-color: #155ab2;
+}
+
+@media (max-width: 920px) {
+  .add-student-container {
+    left:0;
+    width:80vw;  
+  }
+}
+
+@media (max-width:570px) {
+  .form-group {
+    flex-direction: column;
+  }
+  .form-group input {
+    margin:0px;
+    /* width:300px; */
+  }
+}
+
+@media (max-width: 480px) {
+  .add-student-container {
+    left:0;
+    width:80vw;
+  }
 }

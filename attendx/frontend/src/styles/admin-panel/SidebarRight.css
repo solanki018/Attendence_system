@@ -1,17 +1,33 @@
 .sidebar-right {
-    margin-top: 100px;
-    width: 250px;
-    background-color: #e0e0e0;
-    padding: 20px;
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 94px;
+  width: 250px;
+  background-color: #e0e0e0;
+  padding: 20px;
+}
+
+.recent-attendance ul {
+  list-style: none;
+  padding: 0;
+}
+
+.attendance-summary {
+  display: flex;
+  flex-direction: column !important;
+  gap: 5px;
+  margin-left: 10px !important;
+}
+
+@media(max-width:820px) {
+  .sidebar-right {
+    width:20vw;
+    min-width: 130px;
   }
-  
-  .recent-attendance ul {
-    list-style: none;
-    padding: 0;
+}
+
+@media (max-width: 640px) {
+  .sidebar-right {
+    display: none;
   }
-  .attendance-summary{
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
-  
+}

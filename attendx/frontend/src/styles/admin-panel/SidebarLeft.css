@@ -1,9 +1,12 @@
 .sidebar-left {
-  width: 200px;
+  width: 20vw;
+  min-width: 200px;
   background-color: #e0e0e0;
-  padding: 20px;
+  padding-top: 2rem;
   position: fixed;
   height: 100%;
+  display:flex;
+  flex-direction: column;
 }
 
 .sidebar-link {
@@ -13,3 +16,32 @@
   color: black;
   text-decoration: none;
 }
+
+/* Hide sidebar on screens smaller than 920px */
+@media (max-width: 920px) {
+  .sidebar-left {
+    transform: translateX(-150%); /* Hide sidebar off-screen */
+    padding-top: 50px;
+    width:40vw !important;
+    min-width: 220px;
+  }
+
+  /* Show sidebar when the 'open' class is added */
+  .sidebar-left.open {
+    transform: translateX(0);
+    width: 60%; /* Smaller width for mobile */
+    z-index: 1005;
+  }
+
+  /* Burger icon styling */
+  .burger-icon {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+    z-index: 1100; /* Above other elements */
+  }
+}
+

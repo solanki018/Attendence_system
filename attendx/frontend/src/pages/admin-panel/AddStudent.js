@@ -49,88 +49,88 @@ function AddStudent() {
       <Sidebar />
       <div className="add-student-content">
         <Navbar />
-        <div className="add-student-container">
-          <h2>Register a Student</h2>
-          <form onSubmit={handleSubmit} className="add-student-form">
-            <div className="form-group">
-              <input
-                type="text"
-                name="firstName"
-                placeholder="First name"
-                value={formData.firstName}
-                onChange={handleChange}
-              />
-              <input
-                type="text"
-                name="lastName"
-                placeholder="Last name"
-                value={formData.lastName}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="form-group">
-              <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                value={formData.email}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="form-group">
-              <input
-                type="password"
-                name="password"
-                placeholder="Password"
-                value={formData.password}
-                onChange={handleChange}
-              />
-              <input
-                type="password"
-                name="confirmPassword"
-                placeholder="Confirm Password"
-                value={formData.confirmPassword}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="form-group">
-              <input
-                type="text"
-                name="department"
-                placeholder="Department"
-                value={formData.department}
-                onChange={handleChange}
-              />
-              <input
-                type="text"
-                name="course"
-                placeholder="Course"
-                value={formData.course}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="form-group">
-              <input
-                type="text"
-                name="batch"
-                placeholder="Batch"
-                value={formData.batch}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="form-group">
-              <input
-                type="text"
-                name="phone"
-                placeholder="Phone Number"
-                value={formData.phone}
-                onChange={handleChange}
-              />
-            </div>
-            {errorMessage && <p style={{ color: "red" }} className="error-message">{errorMessage}</p>}
-            <button type="submit" className="add-student-button">Register</button>
-          </form>
-        </div>
+          <div className="add-student-container">
+            <h2>Register a Student</h2>
+            <form onSubmit={handleSubmit} className="add-student-form">
+              <div className="form-group">
+                <input
+                  type="text"
+                  name="firstName"
+                  placeholder="First name"
+                  value={formData.firstName}
+                  onChange={handleChange}
+                />
+                <input
+                  type="text"
+                  name="lastName"
+                  placeholder="Last name"
+                  value={formData.lastName}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  value={formData.email}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  value={formData.password}
+                  onChange={handleChange}
+                />
+                <input
+                  type="password"
+                  name="confirmPassword"
+                  placeholder="Confirm Password"
+                  value={formData.confirmPassword}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  type="text"
+                  name="department"
+                  placeholder="Department"
+                  value={formData.department}
+                  onChange={handleChange}
+                />
+                <input
+                  type="text"
+                  name="course"
+                  placeholder="Course"
+                  value={formData.course}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  type="text"
+                  name="batch"
+                  placeholder="Batch"
+                  value={formData.batch}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  type="text"
+                  name="phone"
+                  placeholder="Phone Number"
+                  value={formData.phone}
+                  onChange={handleChange}
+                />
+              </div>
+              {errorMessage && <p style={{ color: "red" }} className="error-message">{errorMessage}</p>}
+              <button type="submit" className="add-student-button">Register</button>
+            </form>
+          </div>
       </div>
     </div>
   );
