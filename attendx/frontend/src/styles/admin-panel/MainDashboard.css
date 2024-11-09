@@ -67,3 +67,9 @@
     margin-left:10px;
   }
 }
+
+@media (max-width: 470px) {
+  .user-cards {
+    justify-content: center;
+  }
+}

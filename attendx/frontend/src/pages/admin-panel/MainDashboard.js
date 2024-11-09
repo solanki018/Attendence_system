@@ -4,7 +4,7 @@ import '../../styles/admin-panel/MainDashboard.css';
 import getDate from "../../contexts/getDate";
 import { handleRemoveStudent } from "../../contexts/handleRemoveStudent";
 
-function MainDashboard({ studentData }) {
+function MainDashboard({ studentData, totalAttendance }) {
 
   const countStudents = () => {
     let checkedInStudentCount = 0;
@@ -45,6 +45,8 @@ function MainDashboard({ studentData }) {
         {studentData.map((student, index) => {
           const today = getDate();
           const todayLog = student.attendanceLog.find(log => log.date === today);
+          let percentageAttednace = (student.attendance / totalAttendance.totalAttendance) * 100;
+          percentageAttednace = percentageAttednace.toFixed(2);
 
           return (
             <div style={{ lineHeight: "0.5rem", paddingRight: "2rem", paddingBottom: "1.5rem" }} key={index} className="user-card">
@@ -52,6 +54,8 @@ function MainDashboard({ studentData }) {
               <p>{student.email}</p>
               <p style={{ textAlign: "left" }}>Check-In: {todayLog?.checkInTime || "--"}</p>
               <p style={{ textAlign: "left" }}>Check-Out: {todayLog?.checkOutTime || "--"}</p>
+              <p style={{ textAlign: "left" }}>Present: {student.attendance}</p>
+              <p style={{ textAlign: "left" }}>Attendance %: {percentageAttednace}</p>
               <button onClick={() => handleRemoveStudent(student.email)} className="checkout-button">Remove Student</button>
             </div>
           );
