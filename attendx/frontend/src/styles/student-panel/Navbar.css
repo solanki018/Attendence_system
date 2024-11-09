@@ -5,18 +5,13 @@
   align-items: center;
   padding: 10px 20px;
   background-color: #d3e0fa; /* Light blue background */
-  width:76vw !important;
+  height:65px;
 }
 
 .navbar h1 {
   color: #333;
   font-size: 24px;
   font-weight: bold;
-}
-
-.navbar-actions {
-  display: flex;
-  align-items: center;
 }
 
 .sign-out-button {
@@ -35,8 +30,9 @@
   background-color: #0056b3; /* Darker shade on hover */
 }
 
+
 /* Profile Initials */
-.profile-initials {
+/* .profile-initials {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -48,12 +44,12 @@
   font-size: 18px;
   text-align: center;
   font-weight: bold;
-}
+} */
 
 /* Profile Picture */
-.navbar-profile-pic {
+/* .navbar-profile-pic {
   width: 40px;
   height: 40px;
   border-radius: 50%;
   object-fit: cover;
-}
+} */

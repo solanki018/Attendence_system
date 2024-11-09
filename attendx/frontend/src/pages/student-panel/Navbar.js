@@ -1,6 +1,6 @@
 // Navbar.js
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 import "../../styles/student-panel/Navbar.css";
 
 function Navbar({studentData}) {
@@ -35,13 +35,6 @@ function Navbar({studentData}) {
         <button className="sign-out-button" onClick={handleSignOut}>
           Sign out
         </button>
-        <Link to="/profile-student" className="profile-link">
-          {profilePic ? (
-            <img src={profilePic} alt="Profile" className="navbar-profile-pic" />
-          ) : (
-            <span className="profile-initials">MK</span> // Replace "MK" with actual initials if you want to make it dynamic
-          )}
-        </Link>
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ import Alerts from './Alerts';
 import '../../styles/student-panel/studentpage.css';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import AttendancePieChart from './piechart';
 
 const client = axios.create({
   baseURL: "http://localhost:8080",
@@ -64,7 +65,7 @@ function StudentPage() {
         <GreetingSection />
         <div className="content-row">
           <AttendanceOverview student={student} totalAttendance={totalAttendance}/>
-          <Alerts />
+          <AttendancePieChart student={student} totalAttendance={totalAttendance} />
         </div>
       </div>
     </div>
